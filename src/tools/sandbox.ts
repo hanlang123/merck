@@ -127,7 +127,7 @@ export class SandboxedCodeTool extends BaseTool {
   protected async execute(params: Record<string, unknown>): Promise<unknown> {
     const code = String(params['code'] ?? '');
     const rawTimeout = typeof params['timeoutMs'] === 'number' ? params['timeoutMs'] : 1000;
-    // Cap at 5 000 ms to prevent long-running abuse
+    // Cap at 5000 ms to prevent long-running abuse
     const timeoutMs = Math.min(Math.max(1, rawTimeout), 5_000);
 
     log.debug({ codeLength: code.length, timeoutMs }, 'Running code in sandbox');
