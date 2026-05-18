@@ -14,7 +14,7 @@ const INJECTION_PATTERNS: RegExp[] = [
   /jailbreak/i,
   /DAN\s+mode/i,
   /prompt\s+injection/i,
-  /<\s*script[^>]*>/i,
+  /<script/i,
   /\beval\s*\(/i,
 ];
 

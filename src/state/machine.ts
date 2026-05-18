@@ -55,6 +55,7 @@ export class TaskStateMachine {
         `Invalid transition ${state.status} → ${to} for task ${taskId}`,
       );
     }
+    const from = state.status;
     state.status = to;
     state.updatedAt = new Date();
     if (to === TaskStatus.FAILED) {
@@ -63,7 +64,7 @@ export class TaskStateMachine {
     } else if (to === TaskStatus.DONE) {
       agentTasksTotal.inc({ agent_type: 'task', status: 'done' });
     }
-    log.info({ taskId, from: state.status, to, reason }, 'Task transition');
+    log.info({ taskId, from, to, reason }, 'Task transition');
     return state;
   }
 
